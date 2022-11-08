@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 1c67b44add09d724287f985522dc7fbf
+=======
+guid: e44543ded457e820ba00c650359c2792
+>>>>>>> 55c49fb (Add ControlScene and PausedMenuScene)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
