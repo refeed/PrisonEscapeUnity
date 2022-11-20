@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Busted.unity
     guid: 7f2ce71f18b0f25468cbca1d254fddb7
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 1ff490d215cd9f34f9cde8a93432cbe1
   m_configObjects: {}
