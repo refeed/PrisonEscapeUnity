@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class shootBullet : MonoBehaviour
 {
     public float range = 10f;
     public float damage = 5f;

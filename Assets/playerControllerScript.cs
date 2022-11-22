@@ -50,6 +50,8 @@ public class playerControllerScript : MonoBehaviour
         anim.SetFloat("speed", Mathf.Abs(move));
         rb.velocity = new Vector3(move * runSpeed, rb.velocity.y, 0);
 
+
+
         if (move > 0 && !facingRight) Flip();
         else if ( move < 0 && facingRight) Flip();
     }
@@ -59,4 +61,11 @@ public class playerControllerScript : MonoBehaviour
         theScale.z *= -1;
         transform.localScale = theScale;
     }
+
+    public float GetFacing() {
+        if (facingRight) return 1;
+        else return -1;
+    }
+
+
 }
