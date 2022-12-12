@@ -74,9 +74,15 @@ public class enemyHealth : MonoBehaviour
     }
 
     void makeDead() {
+
+        zombieController aZombie = GetComponentInChildren<zombieController>();
+        if(aZombie != null){
+            aZombie.ragdollDeath();
+        }
+
         AudioSource.PlayClipAtPoint(deathSound, transform.position, 0.15f);
 
         Destroy(gameObject.transform.root.gameObject);
-        if (drops) Instantiate(drop, transform.position, transform.rotation);
+        if (drops) Instantiate(drop, transform.position, Quaternion.identity);
     }
 }

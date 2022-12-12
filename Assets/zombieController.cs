@@ -5,6 +5,7 @@ using UnityEngine;
 public class zombieController : MonoBehaviour
 {
     public GameObject flipModel;
+    public GameObject ragdollDead;
 
     public AudioClip[] idleSounds;
     public float idleSoundTime;
@@ -106,5 +107,41 @@ public class zombieController : MonoBehaviour
         Vector3 theScale = flipModel.transform.localScale;
         theScale.z *= -1;
         flipModel.transform.localScale = theScale;
+    }
+
+    public void ragdollDeath(){
+        GameObject ragDoll = Instantiate(ragdollDead, transform.root.transform.position, Quaternion.identity) as GameObject;
+        Transform ragDolMaster = ragDoll.transform.Find("master");
+        Transform zombieMaster = transform.root.Find("master");
+
+        bool wasFacingRight = true;
+        if(!facingRight){
+            wasFacingRight = false;
+            Flip();
+        }
+        Transform[] ragDollJoints = ragDolMaster.GetComponentsInChildren<Transform>();
+        Transform[] currentJoints =  zombieMaster.GetComponentsInChildren<Transform>();
+
+        for(int i = 0; i<ragDollJoints.Length; i++){
+             for(int q = 0; q<currentJoints.Length; q++){
+                if(currentJoints[q].name.CompareTo(ragDollJoints[i].name )==0){
+                    ragDollJoints[i].position = currentJoints[q].position;
+                    ragDollJoints[i].rotation = currentJoints[q].rotation;
+                    break;
+                }
+            }
+        }
+        if(wasFacingRight){
+            Vector3 rootVector = new Vector3(0,0,0);
+            ragDoll.transform.rotation = Quaternion.Euler(rootVector);
+        }
+        else{
+            Vector3 rootVector = new Vector3(0,90,0);
+            ragDoll.transform.rotation = Quaternion.Euler(rootVector);
+        }
+        Transform zombieMesh = transform.root.transform.Find("zombieSoldier");
+        Transform ragdollMesh = ragDoll.transform.Find("zombieSoldier");
+        ragdollMesh.GetComponent<Renderer>().material = zombieMesh.GetComponent<Renderer>().material;
+
     }
 }
