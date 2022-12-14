@@ -18,6 +18,8 @@ public class playerControllerScript : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float jumpHght;
+
+    // float firing = Input.GetAxis("Fire1");
     // Start is called before the first frame update
     void Start()
     {
